@@ -54,9 +54,7 @@ router.post("/createuser", [
     console.error(error.message);
     res.status(500).send("Internal Server Error");
   }
-
 })
-
 
 //ROUTE 2: Authenticate a User POST "/api/auth/login". No login required
 router.post("/login", [
@@ -84,14 +82,12 @@ router.post("/login", [
     if (!passComp) {
       return res.status(400).json({success, errors: "Please Enter Valid Credentials" });
     }
-
     const data = {
       user: {
         id: user.id
       }
     }
-    
-    
+      
     const authToken = jwt.sign(data, JWT_SECRET);
     success = true;
     res.json({success, authToken })
